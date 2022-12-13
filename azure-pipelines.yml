@@ -1,0 +1,27 @@
+# HTML
+# Archive your static HTML project and save it with the build record.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(build.sourcesDirectory)'
+    includeRootFolder: false
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure subscription 1(b32b02e4-885d-4056-b4cd-d4a78fcf526d)'
+    appType: 'webApp'
+    appName: 'DW-Tech-Test-UK1'
+    deployToSlotOrASE: true
+    resourceGroupName: 'DW-Tech-Test'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/index.zip'
+    deploymentMethod: 'zipDeploy'
+- task: PublishBuildArtifacts@1
