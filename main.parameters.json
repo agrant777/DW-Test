@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sku": {
+      "value": "F1"
+    },
+      "webApp": {
+        "value": {
+            "name": "DW-Test-3",
+            "windowsFxVersion": "DOTNETCORE|3.0'",
+            "websiteTimeZone":  "GMT Standard Time"
+    }
+  }
+}
+}
